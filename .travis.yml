@@ -9,4 +9,17 @@ before_install:
 script:
   - docker run spanas/docker-react-udemy npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react-udemy"
+  env: "DockerReactUdemy-env"
+  bucket_name: "elasticbeanstalk-us-east-2-565501007003"
+  bucket_path: "docker-react-udemy"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  
   
